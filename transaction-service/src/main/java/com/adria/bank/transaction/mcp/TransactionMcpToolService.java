@@ -35,4 +35,13 @@ public class TransactionMcpToolService {
             @ToolParam(description = "The amount of the transaction to create.") BigDecimal amount) {
         return transactionService.create(new CreateTransactionRequest(accountId, currency, amount));
     }
+
+    @Tool(description = "Transfer funds from one active account to another account in the same currency while creating a transfer-out and transfer-in record.")
+    public List<Transaction> transfer(
+            @ToolParam(description = "The source account identifier that will be debited.") Long fromAccountId,
+            @ToolParam(description = "The destination account identifier that will be credited.") Long toAccountId,
+            @ToolParam(description = "The amount to transfer between the accounts.") BigDecimal amount,
+            @ToolParam(description = "The ISO currency code for the transfer.") String currency) {
+        return transactionService.transfer(fromAccountId, toAccountId, amount, currency);
+    }
 }

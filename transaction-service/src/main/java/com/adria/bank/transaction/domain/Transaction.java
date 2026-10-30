@@ -35,6 +35,10 @@ public class Transaction {
     @Column(nullable = false)
     private String type;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private MerchantCategory merchantCategory;
+
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
@@ -42,6 +46,9 @@ public class Transaction {
     public void prePersist() {
         if (this.createdAt == null) {
             this.createdAt = LocalDateTime.now();
+        }
+        if (this.merchantCategory == null) {
+            this.merchantCategory = MerchantCategory.DEBIT;
         }
     }
 }

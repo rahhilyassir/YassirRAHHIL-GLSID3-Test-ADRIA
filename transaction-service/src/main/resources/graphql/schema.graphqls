@@ -5,6 +5,7 @@ type Query {
 
 type Mutation {
   createTransaction(accountId: ID!, currency: String!, amount: BigDecimal!): Transaction!
+  transfer(fromAccountId: ID!, toAccountId: ID!, amount: BigDecimal!, currency: String!): [Transaction!]!
 }
 
 type Transaction {
@@ -13,5 +14,6 @@ type Transaction {
   currency: String!
   amount: BigDecimal!
   type: String!
+  merchantCategory: String!
   createdAt: String!
 }

@@ -6,6 +6,17 @@ spring:
     name: event-consumer-service
   config:
     import: optional:configserver:http://localhost:8888
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: transaction-audit
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: com.adria.bank.*
+        spring.json.value.default.type: com.adria.bank.event.TransactionCreatedEvent
+        spring.json.use.type.headers: false
 
 eureka:
   client:

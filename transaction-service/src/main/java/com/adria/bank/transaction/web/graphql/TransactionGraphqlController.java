@@ -34,4 +34,12 @@ public class TransactionGraphqlController {
                                         @Argument BigDecimal amount) {
         return transactionService.create(new CreateTransactionRequest(accountId, currency, amount));
     }
+
+    @MutationMapping
+    public List<Transaction> transfer(@Argument Long fromAccountId,
+                                     @Argument Long toAccountId,
+                                     @Argument BigDecimal amount,
+                                     @Argument String currency) {
+        return transactionService.transfer(fromAccountId, toAccountId, amount, currency);
+    }
 }

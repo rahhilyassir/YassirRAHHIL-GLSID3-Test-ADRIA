@@ -22,6 +22,12 @@ public class TransactionController {
         return transactionService.create(new CreateTransactionRequest(request.accountId(), request.currency(), request.amount()));
     }
 
+    @PostMapping("/transfer")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<Transaction> transfer(@RequestBody TransferRequestRest request) {
+        return transactionService.transfer(request.fromAccountId(), request.toAccountId(), request.amount(), request.currency());
+    }
+
     @GetMapping
     public List<Transaction> findAll(@RequestParam(required = false) Long accountId) {
         if (accountId != null) {
