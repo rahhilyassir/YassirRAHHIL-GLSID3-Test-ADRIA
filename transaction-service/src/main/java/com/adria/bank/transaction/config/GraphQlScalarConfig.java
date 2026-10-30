@@ -1,0 +1,15 @@
+package com.adria.bank.transaction.config;
+
+import graphql.scalars.ExtendedScalars;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.graphql.execution.RuntimeWiringConfigurer;
+
+@Configuration
+public class GraphQlScalarConfig {
+
+    @Bean
+    public RuntimeWiringConfigurer bigDecimalScalarConfigurer() {
+        return wiringBuilder -> wiringBuilder.scalar(ExtendedScalars.GraphQLBigDecimal);
+    }
+}
