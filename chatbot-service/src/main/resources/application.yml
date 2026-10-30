@@ -6,6 +6,17 @@ spring:
     name: chatbot-service
   config:
     import: optional:configserver:http://localhost:8888
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY:demo-key}
+      chat:
+        options:
+          model: ${OPENAI_MODEL:gpt-4o-mini}
+    mcp:
+      client:
+        enabled: false
+        toolcallback:
+          enabled: false
 
 eureka:
   client:
