@@ -1,0 +1,22 @@
+h2 { margin-top: 0; }
+.chat-box {
+  display: grid;
+  gap: 12px;
+}
+.chat-box input {
+  flex: 1;
+  min-width: 220px;
+}
+.message {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+.message.user {
+  background: #dbeafe;
+  justify-self: end;
+}
+.message.assistant {
+  background: #e2e8f0;
+  justify-self: start;
+}

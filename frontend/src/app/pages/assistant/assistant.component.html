@@ -1,0 +1,26 @@
+<section class="card">
+  <h2>Assistant</h2>
+  <div class="chat-box">
+    <div class="chat-log">
+      <div *ngFor="let item of chatMessages" class="message" [ngClass]="item.sender">
+        <strong>{{ item.sender === 'user' ? 'You' : 'Assistant' }}:</strong>
+        <div>{{ item.text }}</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <input
+        [(ngModel)]="message"
+        name="message"
+        placeholder="Ask about balances, payments, or account activity"
+        (keydown.enter)="sendMessage()"
+      />
+      <button type="button" [disabled]="loading" (click)="sendMessage()">
+        {{ loading ? 'Sending...' : 'Send' }}
+      </button>
+    </div>
+
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+    <small>Conversation ID: {{ conversationId }}</small>
+  </div>
+</section>
