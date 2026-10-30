@@ -11,6 +11,7 @@ import com.adria.bank.transaction.exception.DownstreamUnavailableException;
 import com.adria.bank.transaction.repository.TransactionRepository;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,6 +37,7 @@ public class TransactionService {
         this(transactionRepository, accountClient, properties, event -> {});
     }
 
+    @Autowired
     public TransactionService(TransactionRepository transactionRepository,
                               AccountClient accountClient,
                               BankTransactionProperties properties,

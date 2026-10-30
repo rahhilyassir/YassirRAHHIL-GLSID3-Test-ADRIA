@@ -1,3 +1,5 @@
+scalar BigDecimal
+
 type Query {
   transactions: [Transaction!]!
   transactionsByAccount(accountId: ID!): [Transaction!]!

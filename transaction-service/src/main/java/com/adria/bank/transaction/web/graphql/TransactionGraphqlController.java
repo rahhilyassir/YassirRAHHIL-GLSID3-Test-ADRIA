@@ -24,22 +24,22 @@ public class TransactionGraphqlController {
     }
 
     @QueryMapping
-    public List<Transaction> transactionsByAccount(@Argument Long accountId) {
+    public List<Transaction> transactionsByAccount(@Argument("accountId") Long accountId) {
         return transactionService.findByAccountId(accountId);
     }
 
     @MutationMapping
-    public Transaction createTransaction(@Argument Long accountId,
-                                        @Argument String currency,
-                                        @Argument BigDecimal amount) {
+    public Transaction createTransaction(@Argument("accountId") Long accountId,
+                                        @Argument("currency") String currency,
+                                        @Argument("amount") BigDecimal amount) {
         return transactionService.create(new CreateTransactionRequest(accountId, currency, amount));
     }
 
     @MutationMapping
-    public List<Transaction> transfer(@Argument Long fromAccountId,
-                                     @Argument Long toAccountId,
-                                     @Argument BigDecimal amount,
-                                     @Argument String currency) {
+    public List<Transaction> transfer(@Argument("fromAccountId") Long fromAccountId,
+                                     @Argument("toAccountId") Long toAccountId,
+                                     @Argument("amount") BigDecimal amount,
+                                     @Argument("currency") String currency) {
         return transactionService.transfer(fromAccountId, toAccountId, amount, currency);
     }
 }

@@ -1,0 +1,13 @@
+**/target/
+**/.git/
+**/.idea/
+**/.vscode/
+**/.classpath
+**/.project
+**/.settings/
+**/node_modules/
+**/.DS_Store
+**/*.iml
+**/.mvn/wrapper/
+.gitignore
+README.md

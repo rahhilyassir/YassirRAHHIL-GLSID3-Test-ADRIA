@@ -26,7 +26,7 @@ public class AccountGraphqlController {
     }
 
     @QueryMapping
-    public AccountGraphql account(@Argument Long id) {
+    public AccountGraphql account(@Argument("id") Long id) {
         return toGraphql(accountService.findById(id));
     }
 
@@ -40,7 +40,7 @@ public class AccountGraphqlController {
     }
 
     @MutationMapping
-    public AccountGraphql updateAccountStatus(@Argument Long id, @Argument AccountStatus status) {
+    public AccountGraphql updateAccountStatus(@Argument("id") Long id, @Argument("status") AccountStatus status) {
         return toGraphql(accountService.updateStatus(id, status));
     }
 
