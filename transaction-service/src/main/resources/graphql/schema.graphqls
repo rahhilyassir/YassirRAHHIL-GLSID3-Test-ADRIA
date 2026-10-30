@@ -1,0 +1,17 @@
+type Query {
+  transactions: [Transaction!]!
+  transactionsByAccount(accountId: ID!): [Transaction!]!
+}
+
+type Mutation {
+  createTransaction(accountId: ID!, currency: String!, amount: BigDecimal!): Transaction!
+}
+
+type Transaction {
+  id: ID!
+  accountId: ID!
+  currency: String!
+  amount: BigDecimal!
+  type: String!
+  createdAt: String!
+}
