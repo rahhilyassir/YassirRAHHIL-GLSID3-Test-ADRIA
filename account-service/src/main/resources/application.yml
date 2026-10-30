@@ -5,7 +5,7 @@ spring:
   application:
     name: account-service
   config:
-    import: optional:configserver:${CONFIG_SERVER_URL:http://localhost:8888}
+    import: optional:configserver:${CONFIG_SERVER_URL:http://localhost:8889}
   ai:
     mcp:
       client:
